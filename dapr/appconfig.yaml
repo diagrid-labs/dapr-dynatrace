@@ -1,0 +1,14 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: appconfig
+spec:
+  features:
+  - enabled: true
+    name: HotReload
+  tracing:
+    otel:
+      endpointAddress: "dynatrace-collector-opentelemetry-collector.dynatrace.svc.cluster.local:4318"
+      isSecure: false
+      protocol: "http"
+    samplingRate: "1"
