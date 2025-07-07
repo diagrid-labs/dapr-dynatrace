@@ -24,13 +24,7 @@
    kubectl create namespace otel-demo
    ```
 
-3. **Deploy Dynatrace Operator (if using DynaKube)**
-
-   ```bash
-   kubectl apply -f ./dynatrace/dynakube.yaml    
-   ```
-
-4. **Deploy OpenTelemetry Collector**
+3. **Deploy OpenTelemetry Collector**
 
    ```bash
    helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -40,7 +34,7 @@
      --namespace dynatrace
    ```
 
-5. **Configure Dapr tracing**
+4. **Configure Dapr tracing**
 
    The Dapr configuration is already set up in `appconfig.yaml` to send traces to the Dynatrace OpenTelemetry Collector:
 
@@ -67,7 +61,7 @@
    kubectl apply -f appconfig.yaml
    ```
 
-6. **Deploy PubSub components**
+5. **Deploy PubSub components**
 
    ```bash
    # Deploy PubSub component
@@ -77,7 +71,7 @@
    kubectl apply -f redis.yaml
    ```
 
-7. **Deploy application components**
+6. **Deploy application components**
 
    ```bash
    # Deploy all subscribers
@@ -91,11 +85,6 @@
 
 ## Verify deployment
 
-Check that all pods are running:
-
-```bash
-kubectl get pods
-```
 
 Access the React form locally:
 
@@ -122,10 +111,10 @@ For full observability beyond just traces, refer to these resources:
 
 ### Logs
 - **[Direct log ingestion](https://docs.dynatrace.com/docs/ingest-from/opentelemetry/collector/use-cases/kubernetes/k8s-podlogs)** - Kubernetes pod logs via OpenTelemetry Collector
-- **[IsItObservable Dapr example](https://github.com/isItObservable/Dapr)** - Complete logs/metrics/tracing setup with collectors
+- **[IsItObservable Dapr example](https://github.com/isItObservable/Dapr)** - Complete dapr example with logs/metrics/tracing setup with collectors
 
 ### Metrics  
-- **[Prometheus configuration](https://docs.dynatrace.com/docs/ingest-from/opentelemetry/collector/use-cases/prometheus)** - Scraping Prometheus metrics via collector
+- **[Collector Prometheus configuration](https://docs.dynatrace.com/docs/ingest-from/opentelemetry/collector/use-cases/prometheus)** - Scraping Prometheus metrics via collector
 - **[Dapr Prometheus config](https://docs.dapr.io/operations/observability/metrics/metrics-overview/#prometheus-endpoint)** - Enabling Dapr metrics endpoint
 
 ### Advanced Integration
